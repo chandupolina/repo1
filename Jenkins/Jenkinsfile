@@ -14,8 +14,8 @@ pipeline {
         stage('push image to GAR') {
             steps {
                 echo 'pushing image to GAR...'
-                sh "docker tag python-app:latest us-docker.pkg.dev/gowtham-project-476511/python-app/img:v1"
-                sh "docker push us-docker.pkg.dev/gowtham-project-476511/python-app/img:v1"
+                sh "docker tag python-app:latest us-docker.pkg.dev/gowtham-project-476511/python-app:v1"
+                sh "docker push us-docker.pkg.dev/gowtham-project-476511/python-app:v1"
             }
         }
         stage('Terraform ') {
