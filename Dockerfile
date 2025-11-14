@@ -10,6 +10,6 @@ RUN apt-get update && \
     libssl-dev && \
     rm -rf /var/lib/apt/lists/*
 COPY app/requirements.txt .
-RUN pip install -r app/requirements.txt
+RUN pip install -r /app/requirements.txt
 COPY . .
 CMD ["flask", "run", "--debug"]
