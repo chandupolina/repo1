@@ -1,15 +1,7 @@
-FROM python:3.10-slim
-WORKDIR /code
-ENV FLASK_APP=app/app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    gcc \
-    musl-dev \
-    libffi-dev \
-    libssl-dev && \
-    rm -rf /var/lib/apt/lists/*
-COPY app/requirements.txt .
-RUN pip install -r /app/requirements.txt
+FROM python:3.9-slim
+RUN apt update
+RUN pip install flask
+WORKDIR /app
 COPY . .
-CMD ["flask", "run", "--debug"]
+EXPOSE 8080
+ENTRYPOINT ["python", "app.py"]
