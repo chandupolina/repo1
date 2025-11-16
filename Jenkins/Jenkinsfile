@@ -37,7 +37,7 @@ pipeline {
                 echo 'Terraform init and apply...'
                 dir ('terraform') {
                     
-                    sh ' terraform init .'
+                    sh ' terraform init '
                     sh " terraform ${params.TERRAFORM_ACTION} -auto-approve"
                 }
             }
