@@ -4,27 +4,6 @@ provider "google" {
   zone    = var.zone
 }
 
-resource "google_compute_network" "vpc" {
-  name = "swarm-vpc"
-  auto_create_subnetworks = false
-}
-resource "google_compute_subnetwork" "subnet" {
-  name          = "swarm-subnet"
-  ip_cidr_range = "10.0.0.0/16"
-  region        = var.region
-  network       = google_compute_network.vpc.name
-}
-
-resource "google_compute_firewall" "allow_http_ssh" {
-  name    = "allow-http-ssh"
-  network = google_compute_network.vpc.name
-  allow {
-    protocol = "tcp"
-    ports    = ["22", "80", "8080", "2377", "7946", "4789"]
-  }
-  source_ranges = ["0.0.0.0/0"]
-}
-
 # SSH Key Generation
 resource "tls_private_key" "ssh_key" {
   algorithm = "RSA"
@@ -56,8 +35,7 @@ resource "google_compute_instance" "manager" {
         }
   }
   network_interface {
-    network = google_compute_network.vpc.name
-    subnetwork = google_compute_subnetwork.subnet.name
+    network = "default"
     access_config {}
   }
   metadata = {
@@ -80,8 +58,7 @@ resource "google_compute_instance" "worker" {
         }
   }
   network_interface {
-    network = google_compute_network.vpc.name
-    subnetwork = google_compute_subnetwork.subnet.name
+    network = "default"
     access_config {}
   }
   metadata = {
@@ -125,7 +102,6 @@ resource "google_compute_forwarding_rule" "swarm_forward" {
   target      = google_compute_target_pool.swarm_pool.self_link
   region      = var.region
 }
-
 
 
 
