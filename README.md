@@ -21,6 +21,13 @@ docker push us-docker.pkg.dev/gowtham-project-476511/python-app/img:v1
 ssh -i /var/lib/jenkins/workspace/Job1/terraform/id_rsa  ubuntu@10.128.0.12
 
 
+root@jenkins-server:~# cat inv 
+[all]
+10.128.0.14 ansible_user=ubuntu ansible_ssh_private_key_file=/var/lib/jenkins/workspace/Job1/terraform/id_rsa
+10.128.0.13 ansible_user=ubuntu ansible_ssh_private_key_file=/var/lib/jenkins/workspace/Job1/terraform/id_rsa
+10.128.0.12 ansible_user=ubuntu ansible_ssh_private_key_file=/var/lib/jenkins/workspace/Job1/terraform/id_rsa
+
+
 
 
 
