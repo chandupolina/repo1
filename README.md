@@ -18,5 +18,9 @@ docker push us-docker.pkg.dev/gowtham-project-476511/python-app/img:v1
 
 
 
+ssh -i /var/lib/jenkins/workspace/Job1/terraform/id_rsa  ubuntu@10.128.0.12
+
+
+
 
 
