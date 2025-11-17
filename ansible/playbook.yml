@@ -45,3 +45,19 @@
       register: join_output
       failed_when: false
 
+---
+- name: clone the repo and deploy docker stack on swarm manager
+  hosts: manager
+  become: true
+  vars:
+    stack_name: "mystack"
+  tasks: 
+  - name: git-cloning the repo
+    ansible.builtin.git:
+      repo: "https://github.com/chandupolina/repo1.git"
+      dest: "/home/ubuntu"
+
+  - name: deploy docker stack
+    ansible.builtin.shell: |
+      docker stack deploy -c /home/ubuntu/repo1/docker-stack.yml {{ stack_name }}
+
