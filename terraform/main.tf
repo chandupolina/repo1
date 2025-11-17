@@ -79,7 +79,7 @@ resource "google_compute_address" "lb_ip" {
 resource "google_compute_http_health_check" "swarm_hc" {
   name         = "swarm-hc"
   request_path = "/"
-  port         = 8080
+  port         = 8000
 }
 
 # Target Pool and Forwarding Rule
