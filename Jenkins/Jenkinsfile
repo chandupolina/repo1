@@ -54,7 +54,7 @@ pipeline {
         stage("Ansible") {
             steps {
                 echo 'Running ansible playbook...'
-                sh 'ansible-playbook -i ansible/inv playbook.yml'
+                sh 'ansible-playbook -i ansible/inv  ansible/playbook.yml'
             }
         }
     }
