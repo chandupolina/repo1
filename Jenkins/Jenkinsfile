@@ -55,7 +55,11 @@ pipeline {
             steps {
                 echo 'Running ansible playbook...'
                 dir ('ansible') {
-                 sh 'ansible-playbook -i inv playbook.yml'
+                 sh '''
+                       export ANSIBLE_HOST_KEY_CHECKING=False 
+                    ansible-playbook -i inv playbook.yml \
+                        --ssh-extra-args="-o StrictHostKeyChecking=no"
+                    '''
                 }
             }
         }
