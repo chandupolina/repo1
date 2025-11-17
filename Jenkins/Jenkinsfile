@@ -54,7 +54,7 @@ pipeline {
         stage("Ansible") {
             steps {
                 echo 'Running ansible playbook...'
-                sh 'ansible-playbook -i inventory.ini playbook.yml'
+                sh 'ansible-playbook -i inv playbook.yml'
             }
         }
         stage("docker swarm") {
