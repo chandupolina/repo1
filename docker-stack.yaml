@@ -3,7 +3,7 @@ version: '3.8'
 
 services:
   web:
-    image: YourUserName/flask-redis-app-2
+    image: us-docker.pkg.dev/gowtham-project-476511/python-app/img:v1
     environment:
       - NODE_HOSTNAME=${NODE_HOSTNAME}
     deploy:
