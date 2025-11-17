@@ -54,7 +54,7 @@ pipeline {
         stage("Ansible") {
             steps {
                 echo 'Running ansible playbook...'
-                dir ('/var/lib/jenkins/workspace/Job1/ansible') {
+                dir ('ansible') {
                  sh 'ansible-playbook -i inv playbook.yml'
                 }
             }
