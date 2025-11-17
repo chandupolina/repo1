@@ -57,12 +57,6 @@ pipeline {
                 sh 'ansible-playbook -i inv playbook.yml'
             }
         }
-        stage("docker swarm") {
-            steps {
-                echo 'Deploying to Docker Swarm...'
-                sh 'docker stack deploy -c docker-stack.yml mystack'
-            }
-        }
     }
 }
 
