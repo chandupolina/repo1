@@ -45,7 +45,6 @@
       register: join_output
       failed_when: false
 
----
 - name: clone the repo and deploy docker stack on swarm manager
   hosts: manager
   become: true
