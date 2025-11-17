@@ -73,7 +73,7 @@
   hosts: manager
   become: yes
   vars:
-    repo_url: "https://github.com/chandupolina/repo1.git"
+    repo_url: "https://github.com/venkat-6666/docker-swarm.git"
     repo_path: "/opt/repo1"
     stack_file: "docker-stack.yaml"
     stack_name: "mystack"
